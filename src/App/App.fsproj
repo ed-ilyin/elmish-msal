@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+  <ItemGroup>
+    <!-- Global to the app -->
+    <Compile Include="Global.fs" />
+    <!-- Navbar -->
+    <Compile Include="Navbar/Types.fs" />
+    <Compile Include="Navbar/State.fs" />
+    <Compile Include="Navbar/View.fs" />
+    <!-- Home -->
+    <Compile Include="Home/Types.fs" />
+    <Compile Include="Home/State.fs" />
+    <Compile Include="Home/View.fs" />
+    <!-- Account -->
+    <Compile Include="Account/Types.fs" />
+    <Compile Include="Account/State.fs" />
+    <Compile Include="Account/View.fs" />
+    <!-- App -->
+    <Compile Include="Types.fs" />
+    <Compile Include="State.fs" />
+    <Compile Include="App.fs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Library\Library.fsproj" />
+  </ItemGroup>
+  <Import Project="..\..\.paket\Paket.Restore.targets" />
+</Project>
