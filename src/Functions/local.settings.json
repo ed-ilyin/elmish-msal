@@ -1,7 +1,0 @@
-{
-    "IsEncrypted": false,
-    "Values": {
-        "AzureWebJobsStorage": "DefaultEndpointsProtocol=https;AccountName=epsonreadyink;AccountKey=0uyniqcNYZADH/83JB4JrkcIeud60rs1+flN3VNh9huypTl4/IXafhftNAPUHHj6kr4zdcI9tjbfOJ00iaiwmw==;BlobEndpoint=https://epsonreadyink.blob.core.windows.net/;TableEndpoint=https://epsonreadyink.table.core.windows.net/;QueueEndpoint=https://epsonreadyink.queue.core.windows.net/;FileEndpoint=https://epsonreadyink.file.core.windows.net/",
-        "AzureWebJobsDashboard": "DefaultEndpointsProtocol=https;AccountName=epsonreadyink;AccountKey=0uyniqcNYZADH/83JB4JrkcIeud60rs1+flN3VNh9huypTl4/IXafhftNAPUHHj6kr4zdcI9tjbfOJ00iaiwmw==;BlobEndpoint=https://epsonreadyink.blob.core.windows.net/;TableEndpoint=https://epsonreadyink.table.core.windows.net/;QueueEndpoint=https://epsonreadyink.queue.core.windows.net/;FileEndpoint=https://epsonreadyink.file.core.windows.net/"
-    }
-}
