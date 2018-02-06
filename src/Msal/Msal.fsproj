@@ -4,7 +4,12 @@
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Logger.fs" />
+    <Compile Include="ClientInfo.fs" />
+    <Compile Include="IdToken.fs" />
+    <Compile Include="User.fs" />
     <Compile Include="UserAgentApplication.fs" />
+    <Compile Include="Msal.fs" />
   </ItemGroup>
   <Import Project="..\..\.paket\Paket.Restore.targets" />
 </Project>

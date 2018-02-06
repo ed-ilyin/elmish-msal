@@ -1,11 +1,11 @@
 // ts2fable 0.5.2
-module rec UserAgentApplication
+module rec Fable.Import.Msal.UserAgentApplication
 open System
 open Fable.Core
 open Fable.Import.JS
 
-type Logger = __Logger.Logger
-type User = __User.User
+type Logger = Logger.Logger
+type User = User.User
 
 type [<AllowNullLiteral>] IExports =
     abstract UserAgentApplication: UserAgentApplicationStatic
