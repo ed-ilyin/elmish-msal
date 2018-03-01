@@ -6,8 +6,5 @@
   <ItemGroup>
     <Compile Include="App.fs" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Msal\Msal.fsproj" />
-  </ItemGroup>
   <Import Project="..\..\.paket\Paket.Restore.targets" />
 </Project>

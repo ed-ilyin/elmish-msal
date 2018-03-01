@@ -5,4 +5,5 @@ Fable.Elmish.Browser
 Fable.Elmish.Debugger
 Fable.Elmish.HMR
 Fable.Elmish.React
+Fable.Import.Msal
 FSharp.Core

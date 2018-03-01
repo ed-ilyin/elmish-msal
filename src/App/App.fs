@@ -27,7 +27,7 @@ type Msg =
     | SignOut
 
 
-// do printfn "window location: %A" window.location
+do printfn "window location: %A" window.location
 let b2cClientId = "0041318d-9770-47b5-be03-f9d7f94d2793"
 let b2cLogin = "https://login.microsoftonline.com/"
 let tenant = "automaticinkelkjop"
@@ -55,30 +55,38 @@ let getUser ofOk (susi: Msal.UserAgentApplication) =
 let toHash = function Home -> "#home" | Account -> "#account"
 
 let urlUpdate (result: Option<Page>) model =
-    // do printfn "URL update: %A" result
+    do printfn "URL update: %A" result
     match result with
         | None -> model, toHash model.page |> Navigation.modifyUrl
         | Some page -> { model with page = page }, Cmd.none
+
+let log tag a =
+    do printfn "%s: %A" tag a
+    a
 
 let init result =
     let (model, cmd) =
         urlUpdate result { error = None; user = None; page = Home }
 
     model
-        , Cmd.ofSub <| fun dispatch ->
-            msalApp "signup_signin" (Failure >> dispatch)
-                <| fun token ->
-                    // do printfn "token callback: %s" token
-                    msalApp "signup_signin" (Failure >> dispatch)
-                        ignore
-                        |> getUser (UpdateUser >> dispatch)
-                |> getUser (UpdateUser >> dispatch)
+        , Cmd.batch [
+            Cmd.ofSub <| fun dispatch ->
+                msalApp "signup_signin" (Failure >> dispatch)
+                    <| fun token ->
+                        do printfn "token callback: %s" token
+                        msalApp "signup_signin" (Failure >> dispatch)
+                            ignore
+                            |> getUser (log "cb user" >> UpdateUser >> dispatch)
+                    |> log "msal"
+                    |> getUser (log "1 user" >> UpdateUser >> dispatch)
+            cmd
+        ]
 
 let b2cScopes =
     [| sprintf "https://%s.onmicrosoft.com/api/read" tenant |]
 
 let update msg model =
-    // do printfn "update: %A" msg
+    do printfn "update: %A" msg
     match msg with
         | Failure x -> { model with error = Some x.Message }, Cmd.none
 
@@ -107,7 +115,7 @@ let root (model: Model) dispatch =
                 |> str
         ]
         div [] [
-            button [ OnClick (fun _ -> dispatch SignIn ) ]
+            a [ Href "#signin"; OnClick (fun _ -> dispatch SignIn ) ]
                 [ str "sign in" ]
         ]
         div [] [
@@ -115,7 +123,7 @@ let root (model: Model) dispatch =
                 |> str
         ]
         div [] [
-            button [ OnClick (fun _ -> dispatch SignOut ) ]
+            a [ Href "#signout"; OnClick (fun _ -> dispatch SignOut ) ]
                 [ str "sign out" ]
         ]
     ]
